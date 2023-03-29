@@ -29,6 +29,7 @@ function setup()
 
   // Modificar/completar
   ponerMinaCasillero(4, 4);
+  casillerosSinDescubrir=FILAS*COLUMNAS;
 }
 
 
@@ -44,9 +45,17 @@ function draw() {
       else
       {
         pintarCasillero(columnaPresionada, filaPresionada, COLOR_CASILLERO_SIN_MINA); //pinta el casillero clickeado. Modificar/completar
+        descubrirCasillero(columnaPresionada,filaPresionada);
       }
 
+
     }
+    if(mouseButton==RIGHT){
+      pintarCasillero(columnaPresionada,filaPresionada,COLOR_CASILLERO_MARCADO);
+
+    }
+
+
     hizoClick = false;  //Indico que ya "procesé" el click del usuario. NO modificar
   }
 }
@@ -54,7 +63,12 @@ function draw() {
 
 function ganoElJuego()
 {
-  return false;   //Esto hace que NUNCA gane el juego. Modificar/completar
+  if (casillerosSinDescubrir<CANTIDAD_MINAS){
+    return true;
+  }
+  else{
+    return true;
+  }   
 }
 
 function ponerMinasTablero()
