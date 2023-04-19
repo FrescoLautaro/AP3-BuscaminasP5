@@ -108,5 +108,14 @@ function mostrarMinas()
 
 function contarMinasAlrededor(columna, fila)
 {
-  return 9;   //Esto hace que SIEMPRE cuente 9 minas alrededor. Modificar/completar
+ let cont=0;
+ let array_1=[0,1,1,1,0,-1,-1,-1]
+ let array_2=[-1,-1,0,1,1,1,0,-1]
+ for (let i=0;i<8;i++){
+  if(tieneMinaCasillero(columna+array_1[i],fila+array_2[i])){
+    cont++;
+  }
+
+ }
+  return cont;   //Esto hace que SIEMPRE cuente 9 minas alrededor. Modificar/completar
 }
